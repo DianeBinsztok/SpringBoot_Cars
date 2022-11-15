@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
-import com.example.demo.cars.Car;
 import com.example.demo.dao.CarDao;
+import com.example.demo.cars.Car;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +27,9 @@ public class CarController {
     @GetMapping("/brand/{brand}")
     public List<Car> listByBrand(@PathVariable String brand){
         return carDao.carsByBrand(brand);
+    }
+    @GetMapping("/color/{color}")
+    public List<Car> listByColor(@PathVariable String color){
+        return carDao.carsByColor(color);
     }
 }

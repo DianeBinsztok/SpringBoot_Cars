@@ -1,5 +1,5 @@
 // DAO: Data Access Object
-// L'interface dao liste les méthodes qui devront être implémentées pour accéder aux données
+// L'interface DAO liste les méthodes qui devront être implémentées pour accéder aux données
 // (ex: toutes les données, une donnée en détail, les données filtrée selon une propriété, etc.)
 
 package com.example.demo.dao;
@@ -12,4 +12,6 @@ public interface CarDao {
     Car carById(int id);
 
     List<Car> carsByBrand(String brand);
+
+    List<Car> carsByColor(String color);
 }
