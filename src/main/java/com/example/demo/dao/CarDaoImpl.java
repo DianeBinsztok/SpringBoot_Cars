@@ -60,4 +60,9 @@ public class CarDaoImpl implements CarDao{
         }
         return listByColor;
     }
+
+    @Override
+    public void save(Car newCar) {
+        cars.add(newCar);
+    }
 }

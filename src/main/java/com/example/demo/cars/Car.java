@@ -1,6 +1,7 @@
 package com.example.demo.cars;
 
 public class Car {
+
     private final long id;
     private final String model;
     private final String brand;
