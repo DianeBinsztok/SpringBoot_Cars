@@ -16,4 +16,7 @@ public interface CarDao {
     List<Car> carsByColor(String color);
 
     void save(Car newCar);
+
+    void update(int id, Car newSpecCar);
+    void delete(int id);
 }

@@ -31,10 +31,22 @@ public class CarController {
         return carDao.carsByColor(color);
     }
 
+
     @PostMapping(value = "/cars")
     // @RequestBody demande à Spring de convertir le corps de la requête HTTP en JSON
     // La requête en JSON sera convertie en objet Car
     public void addCar(@RequestBody Car newCar){
          carDao.save(newCar);
     }
+
+    @PutMapping(value = "/update/{id}")
+    public void updateCar(@PathVariable int id, @RequestBody Car newSpecCar){
+        carDao.update(id, newSpecCar);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public void removeCar(@PathVariable int id){
+        carDao.delete(id);
+    }
+
 }

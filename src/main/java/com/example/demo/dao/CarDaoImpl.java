@@ -65,4 +65,15 @@ public class CarDaoImpl implements CarDao{
     public void save(Car newCar) {
         cars.add(newCar);
     }
+
+    @Override
+    public void update(int id, Car newSpecCar) {
+        Car target = carById(id);
+        cars.set(cars.indexOf(target), newSpecCar);
+    }
+
+    @Override
+    public void delete(int id) {
+        cars.remove(carById(id));
+    }
 }
