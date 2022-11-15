@@ -7,21 +7,27 @@ import java.util.List;
 @Repository
 public class CarDaoImpl implements CarDao{
 
-    public static List<Car> cars = new ArrayList<>();
+    //Attribut de l'interface
+    public List<Car> cars = new ArrayList<>();
 
-    static{
-        cars.add(new Car(1, "c3", "citroen", "blue"));
-        cars.add(new Car(2, "advensis", "toyota", "gray"));
-        cars.add(new Car(3, "punto", "fiat", "red"));
-        cars.add(new Car(4, "twingo", "renault", "purple"));
-        cars.add(new Car(5, "c4", "citroen", "gray"));
-        cars.add(new Car(6, "c4", "citroen", "blue"));
-        cars.add(new Car(7, "rav4", "toyota", "black"));
-        cars.add(new Car(8, "punto", "fiat", "blue"));
-        cars.add(new Car(9, "megane", "renault", "gray"));
-        cars.add(new Car(10, "picasso", "citroen", "red"));
+    //Constructeur
+    /*Quand le contrôleur appelle l'interface CarDaoImpl, SprintBoot l'instancie. Chaque instance aura l'attribut 'cars' et le constructeur lui transmet ses données*/
+    public CarDaoImpl() {
+        this.cars.add(new Car(1, "c3", "citroen", "blue"));
+        this.cars.add(new Car(2, "advensis", "toyota", "gray"));
+        this.cars.add(new Car(3, "punto", "fiat", "red"));
+        this.cars.add(new Car(4, "twingo", "renault", "purple"));
+        this.cars.add(new Car(5, "c4", "citroen", "gray"));
+        this.cars.add(new Car(6, "c4", "citroen", "blue"));
+        this.cars.add(new Car(7, "rav4", "toyota", "black"));
+        this.cars.add(new Car(8, "punto", "fiat", "blue"));
+        this.cars.add(new Car(9, "megane", "renault", "gray"));
+        this.cars.add(new Car(10, "picasso", "citroen", "red"));
     }
 
+
+
+    //Méthodes
     @Override
     public List<Car> carsIndex() {
         return cars;
