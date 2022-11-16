@@ -5,7 +5,9 @@
 package com.example.demo.dao;
 import java.util.List;
 import com.example.demo.cars.Car;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CarDao {
     List<Car> carsIndex();
 

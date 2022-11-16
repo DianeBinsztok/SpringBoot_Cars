@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class DemoApplicationTests {
 
+	// vérifie que Spring Boot démarre
 	@Test
 	void contextLoads() {
 	}
