@@ -68,8 +68,12 @@ public class CarControllerTest {
     }
     @Test
     public void checkIfBrandPageReturnsAList() {
-        ResponseEntity<List> serverResponse = restTemplate.getForEntity("/brand/toyota", List.class);
-        assertThat(serverResponse.getBody() instanceof ArrayList);
+    //  ResponseEntity<List> serverResponse = restTemplate.getForEntity("/brand/toyota", List.class);
+    //  assertThat(serverResponse.getBody() instanceof ArrayList);
+
+        // ou avec getForObject():
+        List<Car> serverResponse = restTemplate.getForObject("/brand/toyota", List.class);
+        assertThat(serverResponse instanceof ArrayList);
     }
 
 }
