@@ -28,8 +28,10 @@ public class CarController {
         return "index";
     }
     @GetMapping("/car/{id}")
-    public Car carDetail(@PathVariable int id){
-        return carDao.findById(id).get();
+    public String carDetail(@PathVariable int id, Model model){
+        Car car = carDao.findById(id).get();
+        model.addAttribute("car", car);
+        return "carDetail";
     }
 
     // on pouvait aussi écrire:
