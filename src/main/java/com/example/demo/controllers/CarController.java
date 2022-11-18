@@ -47,12 +47,28 @@ public class CarController {
         return "index";
     }
     @GetMapping("/color/{color}")
-    public List<Car> listByColor(@PathVariable String color){
-        return carDao.findByColor(color);
+    public String listByColor(@PathVariable String color, Model model){
+        List<Car> cars = carDao.findByColor(color);
+        model.addAttribute("cars", cars);
+        model.addAttribute("title", "All our available "+color+" vehicles");
+        return "index";
     }
-    @GetMapping("/color-brand/{color}-{brand}")
-    public List<Car> listByBrandAndColor(@PathVariable String color, @PathVariable String brand){
-        return carDao.findByBrandAndColor(color, brand);
+
+// Marche pas => ne renvoie pas d'erreur mais ne trouve pas les données
+//    @GetMapping("/color-brand/{color}-{brand}")
+//    public String listByBrandAndColor(@PathVariable String color, @PathVariable String brand, Model model){
+//        List<Car> cars = carDao.findByBrandAndColor(color, brand);
+//        System.out.println(cars);
+//        model.addAttribute("cars", cars);
+//        model.addAttribute("title", "All our available "+color+" "+brand);
+//        return "index";
+//    }
+
+    @GetMapping(value = "/cars")
+    public String addCarForm(Model model){
+        model.addAttribute("title", "Add a new vehicle to our park");
+        model.addAttribute("car", new Car());
+        return "newCarForm";
     }
     @PostMapping(value = "/cars")
     // @RequestBody demande à Spring de convertir le corps de la requête HTTP en JSON

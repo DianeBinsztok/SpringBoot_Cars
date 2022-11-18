@@ -17,8 +17,10 @@
                 <td th:text="${car.color}" />
         </tr>
         </li>
-
     </ul>
+    <form th:action="@{/cars}">
+        <input type="submit" value="Add a new vehicle" />
+    </form>
 </main>
 <footer>Ceci est un test</footer>
 
