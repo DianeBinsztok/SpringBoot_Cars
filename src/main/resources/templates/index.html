@@ -7,7 +7,7 @@
 <tbody>
 <header><h1>Spring Test:</h1></header>
 <main>
-    <h2>Nos véhicules disponibles:</h2>
+    <h2><td th:text="${title}"/></h2>
     <ul>
         <tr th:each="car: ${cars}">
             <li>

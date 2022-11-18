@@ -25,6 +25,7 @@ public class CarController {
     public String cars(Model model){
         List<Car> cars = this.carDao.findAll();
         model.addAttribute("cars", cars);
+        model.addAttribute("title", "All our available vehicles");
         return "index";
     }
     @GetMapping("/car/{id}")
@@ -39,8 +40,11 @@ public class CarController {
     //        return carDao.findById(id);
     //    }
     @GetMapping("/brand/{brand}")
-    public List<Car> listByBrand(@PathVariable String brand){
-        return carDao.findByBrand(brand);
+    public String listByBrand(@PathVariable String brand, Model model){
+        List<Car> cars = carDao.findByBrand(brand);
+        model.addAttribute("cars", cars);
+        model.addAttribute("title", "All our available "+brand);
+        return "index";
     }
     @GetMapping("/color/{color}")
     public List<Car> listByColor(@PathVariable String color){
