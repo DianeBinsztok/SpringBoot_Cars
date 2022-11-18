@@ -21,17 +21,12 @@ public class CarController {
         this.carDao = carDao;
     }
 
-    @GetMapping("/")
-    public List<Car> cars(){
-        return this.carDao.findAll();
-    }
-    @GetMapping("/index")
-    public String index(Model model){
+    @GetMapping(value= {"/", "/index"})
+    public String cars(Model model){
         List<Car> cars = this.carDao.findAll();
         model.addAttribute("cars", cars);
         return "index";
     }
-
     @GetMapping("/car/{id}")
     public Car carDetail(@PathVariable int id){
         return carDao.findById(id).get();
