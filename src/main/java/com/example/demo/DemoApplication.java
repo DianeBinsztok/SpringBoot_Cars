@@ -10,13 +10,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 public class DemoApplication {
-	@Bean
-	@Description("Spring Message Resolver")
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
-	}
+//	@Bean
+//	@Description("Spring Message Resolver")
+////	public ResourceBundleMessageSource messageSource() {
+////		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+////		messageSource.setBasename("messages");
+////		return messageSource;
+////	}
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}

@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 // Rest Controller envoie du JSON
-// si je veux envoyer un template, j'utilise l'annotaion @Controller
-@Controller
+// si je veux envoyer un template, j'utilise l'annotation @Controller
+@RestController
 public class CarController {
 
     private final CarDao carDao;
@@ -21,18 +21,13 @@ public class CarController {
         this.carDao = carDao;
     }
 
-    @GetMapping(value= {"/", "/index"})
-    public String cars(Model model){
-        List<Car> cars = this.carDao.findAll();
-        model.addAttribute("cars", cars);
-        model.addAttribute("title", "All our available vehicles");
-        return "index";
+    @GetMapping("/")
+    public List<Car> cars(){
+        return this.carDao.findAll();
     }
     @GetMapping("/car/{id}")
-    public String carDetail(@PathVariable int id, Model model){
-        Car car = carDao.findById(id).get();
-        model.addAttribute("car", car);
-        return "carDetail";
+    public Car carDetail(@PathVariable int id){
+        return carDao.findById(id).get();
     }
 
     // on pouvait aussi écrire:
@@ -40,18 +35,12 @@ public class CarController {
     //        return carDao.findById(id);
     //    }
     @GetMapping("/brand/{brand}")
-    public String listByBrand(@PathVariable String brand, Model model){
-        List<Car> cars = carDao.findByBrand(brand);
-        model.addAttribute("cars", cars);
-        model.addAttribute("title", "All our available "+brand);
-        return "index";
+    public List<Car> listByBrand(@PathVariable String brand){
+        return carDao.findByBrand(brand);
     }
     @GetMapping("/color/{color}")
-    public String listByColor(@PathVariable String color, Model model){
-        List<Car> cars = carDao.findByColor(color);
-        model.addAttribute("cars", cars);
-        model.addAttribute("title", "All our available "+color+" vehicles");
-        return "index";
+    public List<Car> listByColor(@PathVariable String color){
+        return carDao.findByColor(color);
     }
 
 // Marche pas => ne renvoie pas d'erreur mais ne trouve pas les données
@@ -64,12 +53,6 @@ public class CarController {
 //        return "index";
 //    }
 
-    @GetMapping(value = "/cars")
-    public String addCarForm(Model model){
-        model.addAttribute("title", "Add a new vehicle to our park");
-        model.addAttribute("car", new Car());
-        return "newCarForm";
-    }
     @PostMapping(value = "/cars")
     // @RequestBody demande à Spring de convertir le corps de la requête HTTP en JSON
     // La requête en JSON sera convertie en objet Car
